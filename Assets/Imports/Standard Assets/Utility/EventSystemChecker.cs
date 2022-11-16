@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -15,7 +15,7 @@ public class EventSystemChecker : MonoBehaviour
            //Instantiate(eventSystem);
             GameObject obj = new GameObject("EventSystem");
             obj.AddComponent<EventSystem>();
-            obj.AddComponent<StandaloneInputModule>().forceModuleActive = true;
+            obj.AddComponent<StandaloneInputModule>();
         }
 	}
 }
