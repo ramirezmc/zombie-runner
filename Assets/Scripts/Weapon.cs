@@ -5,6 +5,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
 	[SerializeField]Camera FPCamera;
+	[SerializeField]ParticleSystem MuzzleFlash;
+	[SerializeField]GameObject hitVFX;
 	[SerializeField]float gunRange = 100f;
 	[SerializeField]int weaponDamage = 10;
 	
@@ -17,7 +19,7 @@ public class Weapon : MonoBehaviour
 	
     void Update()
     {
-	    if (Input.GetButton("Fire1"))
+	    if (Input.GetButtonDown("Fire1"))
 	    {
 	    	Shoot();
 	    }
@@ -25,21 +27,33 @@ public class Weapon : MonoBehaviour
     
 	void Shoot()
 	{
+		MuzzleFlash.Play();
+		ProcessRaycast();
+	}
+	void ProcessRaycast()
+	{
 		RaycastHit hitInfo;
 		if (Physics.Raycast(FPCamera.transform.position, FPCamera.transform.forward, out hitInfo, gunRange))
 		{
-			//add vfx here
 			if(hitInfo.transform.tag == "Enemy")
 			{
 				enemyHealth.TakeDamage(weaponDamage);
-				Debug.Log("I have hit " + hitInfo.transform.name);
 			}
-			
-			
+			else
+			{
+				CreateImpactVFX(hitInfo);
+			}
 		}
 		else
 		{
 			return;
 		}
 	}
+	
+	void CreateImpactVFX(RaycastHit info)
+	{
+		GameObject impact = Instantiate(hitVFX, info.point, Quaternion.LookRotation(info.normal));
+		Destroy(impact, 0.1f);
+	}
+	
 }
