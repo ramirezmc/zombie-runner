@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3182142619862626775}
   - component: {fileID: 3182142619855032599}
   - component: {fileID: 3182142619861215059}
+  - component: {fileID: 8773676314018503938}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,6 +135,18 @@ MonoBehaviour:
     slowDownRate: 20
     airControl: 0
     shellOffset: 0
+--- !u!114 &8773676314018503938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3182142619867746993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e4dadcc43bd20441bd5b935acf3dc7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3182142619867746995
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FPCamera: {fileID: 3182142619866501271}
   MuzzleFlash: {fileID: 180248844142761102}
+  hitVFX: {fileID: 6092268393039910438, guid: cbe9d2896a2707e4394e604f7e28f12c, type: 3}
   gunRange: 100
   weaponDamage: 10
 --- !u!1001 &5030411885488851396

@@ -14,13 +14,10 @@ public class EnemyHealth : MonoBehaviour
 	
 	public void TakeDamage(int damage)
 	{
-		if(currentHitPoints > 0)
-		{
-			currentHitPoints -= damage;
-		}
-		else if (currentHitPoints <= 0)
+		if (currentHitPoints <= 0)
 		{
 			Destroy(gameObject);
 		}
+		currentHitPoints -= damage;
 	}
 }
