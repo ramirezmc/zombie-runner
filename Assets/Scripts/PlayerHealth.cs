@@ -14,7 +14,7 @@ public class PlayerHealth : MonoBehaviour
 	
 	public void PlayerHit(int damageTook)
 	{
-		if (currentPlayerHitPoints <= 0)
+		if (currentPlayerHitPoints < 1)
 		{
 			Debug.Log("You died lmao");
 		}

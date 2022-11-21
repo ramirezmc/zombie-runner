@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e4dadcc43bd20441bd5b935acf3dc7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxPlayerHitPoints: 100
 --- !u!1 &3182142619867746995
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,6 +14,7 @@ public class EnemyHealth : MonoBehaviour
 	
 	public void TakeDamage(int damage)
 	{
+		BroadcastMessage("IfShot");
 		if (currentHitPoints <= 0)
 		{
 			Destroy(gameObject);
