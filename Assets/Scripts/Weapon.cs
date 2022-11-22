@@ -9,7 +9,6 @@ public class Weapon : MonoBehaviour
 	[SerializeField]GameObject hitVFX;
 	[SerializeField]float gunRange = 100f;
 	[SerializeField]int weaponDamage = 10;
-	
 	EnemyHealth enemyHealth;
 	
 	protected void Awake()
@@ -30,6 +29,7 @@ public class Weapon : MonoBehaviour
 		MuzzleFlash.Play();
 		ProcessRaycast();
 	}
+	
 	void ProcessRaycast()
 	{
 		RaycastHit hitInfo;
@@ -37,7 +37,7 @@ public class Weapon : MonoBehaviour
 		{
 			if(hitInfo.transform.tag == "Enemy")
 			{
-				enemyHealth.TakeDamage(weaponDamage);
+				hitInfo.transform.GetComponent<EnemyHealth>().TakeDamage(weaponDamage);
 			}
 			else
 			{
@@ -55,5 +55,4 @@ public class Weapon : MonoBehaviour
 		GameObject impact = Instantiate(hitVFX, info.point, Quaternion.LookRotation(info.normal));
 		Destroy(impact, 0.1f);
 	}
-	
 }

@@ -80,12 +80,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 3182142619866501271}
   movementSettings:
-    ForwardSpeed: 8
-    BackwardSpeed: 4
-    StrafeSpeed: 4
-    RunMultiplier: 2
+    ForwardSpeed: 3
+    BackwardSpeed: 3
+    StrafeSpeed: 3
+    RunMultiplier: 1.5
     RunKey: 304
-    JumpForce: 50
+    JumpForce: 35
     SlopeCurveModifier:
       serializedVersion: 2
       m_Curve:
@@ -327,6 +327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3193542998849143921}
   - component: {fileID: 2247674275167390222}
+  - component: {fileID: 5470728011783870621}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
@@ -367,6 +368,21 @@ MonoBehaviour:
   hitVFX: {fileID: 6092268393039910438, guid: cbe9d2896a2707e4394e604f7e28f12c, type: 3}
   gunRange: 100
   weaponDamage: 10
+--- !u!114 &5470728011783870621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5008987552490354769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e8f8a0ed751cd41899fa2a95866b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 3182142619866501271}
+  zoomedInFOV: 30
+  zoomedOutFOV: 60
 --- !u!1001 &5030411885488851396
 PrefabInstance:
   m_ObjectHideFlags: 0

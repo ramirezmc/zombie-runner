@@ -5,13 +5,19 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-	[SerializeField]Transform target;
+	
 	[SerializeField]float chaseRange = 5f;
 	[SerializeField]float turnSpeed = 10f;
+	Transform target;
 	bool isProvoked = false;
 	
 	NavMeshAgent navMeshAgent;
 	float distanceToTarget = Mathf.Infinity;
+	
+	protected void Awake()
+	{
+		target = FindObjectOfType<PlayerHealth>().transform;
+	}
 	
     void Start()
     {
@@ -32,15 +38,11 @@ public class EnemyAI : MonoBehaviour
 		{
 			EngageTarget();
 		}
-		else if (distanceToTarget <= chaseRange)
+		
+		if (distanceToTarget <= chaseRange)
 		{
 			isProvoked = true;
 		}
-	}
-	
-	public void IfShot()
-	{
-		isProvoked = true;
 	}
 	
 	void EngageTarget()
@@ -54,6 +56,11 @@ public class EnemyAI : MonoBehaviour
 		{
 			AttackTarget();
 		}
+	}
+	
+	public void OnDamageTaken()
+	{
+		isProvoked = true;
 	}
 	
 	void ChaseTarget()
