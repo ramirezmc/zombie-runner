@@ -2,18 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(WeaponZoom), typeof(Ammo))]
 public class Weapon : MonoBehaviour
 {
 	[SerializeField]Camera FPCamera;
 	[SerializeField]ParticleSystem MuzzleFlash;
 	[SerializeField]GameObject hitVFX;
+	
+	
 	[SerializeField]float gunRange = 100f;
 	[SerializeField]int weaponDamage = 10;
+	
 	EnemyHealth enemyHealth;
+	Ammo ammoSystem;
+	int weaponCurrentAmmo = 0;
 	
 	protected void Awake()
 	{
 		enemyHealth = FindObjectOfType<EnemyHealth>();
+		ammoSystem = GetComponent<Ammo>();
+		
 	}
 	
     void Update()
@@ -26,8 +34,17 @@ public class Weapon : MonoBehaviour
     
 	void Shoot()
 	{
-		MuzzleFlash.Play();
-		ProcessRaycast();
+		weaponCurrentAmmo = ammoSystem.ReturnCurrentAmmo();
+		if (weaponCurrentAmmo > 0)
+		{
+			MuzzleFlash.Play();
+			ammoSystem.DecreaseAmmo();
+			ProcessRaycast();
+		}
+		else
+		{
+			ammoSystem.Reload();
+		}
 	}
 	
 	void ProcessRaycast()
