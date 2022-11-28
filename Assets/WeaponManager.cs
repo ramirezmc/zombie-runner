@@ -4,40 +4,77 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-	[SerializeField]GameObject M1911Pistol;
-	[SerializeField]GameObject M4AR;
-	[SerializeField]GameObject BennelliShotgun;
+	[SerializeField] int currentWeapon = 0;
 	
-	protected void Start()
-	{
-		M1911Pistol.gameObject.SetActive(false);
-		M4AR.gameObject.SetActive(true);
-		BennelliShotgun.gameObject.SetActive(false);
-	}
     void Update()
-    {
-	    ManageCurrentGun();
+	{
+		int previousWeapon = currentWeapon;
+		
+		ProcessKeyInput();
+		ProcessScrollWheel();
+		
+		if (previousWeapon != currentWeapon)
+		{
+			ManageCurrentGun();
+		}
     }
     
 	void ManageCurrentGun()
 	{
+		int weaponIndex = 0;
+		foreach (Transform weapon in transform)
+		{
+			if (weaponIndex == currentWeapon)
+			{
+				weapon.gameObject.SetActive(true);
+			}
+			else
+			{
+				weapon.gameObject.SetActive(false);
+			}
+			weaponIndex ++;
+		}
+	}
+	
+	void ProcessKeyInput()
+	{
 		if (Input.GetKeyDown(KeyCode.Alpha1))
 		{
-			M1911Pistol.gameObject.SetActive(true);
-			M4AR.gameObject.SetActive(false);
-			BennelliShotgun.gameObject.SetActive(false);
+			currentWeapon = 0;
 		}
-		else if (Input.GetKeyDown(KeyCode.Alpha2))
+		if (Input.GetKeyDown(KeyCode.Alpha2))
 		{
-			M1911Pistol.gameObject.SetActive(false);
-			M4AR.gameObject.SetActive(true);
-			BennelliShotgun.gameObject.SetActive(false);
+			currentWeapon = 1;
 		}
-		else if (Input.GetKeyDown(KeyCode.Alpha3))
+		if (Input.GetKeyDown(KeyCode.Alpha3))
 		{
-			M1911Pistol.gameObject.SetActive(false);
-			M4AR.gameObject.SetActive(false);
-			BennelliShotgun.gameObject.SetActive(true);
+			currentWeapon = 2;
+		}
+	}
+	
+	void ProcessScrollWheel()
+	{
+		if (Input.GetAxis("Mouse ScrollWheel") > 0)
+		{
+			if (currentWeapon >= transform.childCount - 1)
+			{
+				currentWeapon = 0;
+			}
+			else
+			{
+				currentWeapon++;
+			}
+		}
+		else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+		{
+			if (currentWeapon <= 0)
+			{
+				currentWeapon = transform.childCount - 1;
+			}
+			else
+			{
+				currentWeapon--;
+			}
 		}
 	}
 }

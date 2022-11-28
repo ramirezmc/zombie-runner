@@ -12,41 +12,77 @@ public class Weapon : MonoBehaviour
 	
 	[SerializeField]float gunRange = 100f;
 	[SerializeField]int weaponDamage = 10;
+	[SerializeField]float fireRate = 1;
+	[SerializeField]float reloadTime = 1f;
+	
+	[SerializeField]bool isFullAuto = false;
+	
 	
 	EnemyHealth enemyHealth;
-	Ammo ammoSystem;
-	int weaponCurrentAmmo = 0;
+	Ammo ammo;
+	
+	bool canShoot = true;
+	int weapCurrentAmmo ;
+	int weapMaxAmmo;
 	
 	protected void Awake()
 	{
 		enemyHealth = FindObjectOfType<EnemyHealth>();
-		ammoSystem = GetComponent<Ammo>();
+		ammo = GetComponent<Ammo>();
 		
 	}
 	
     void Update()
     {
-	    if (Input.GetButtonDown("Fire1"))
+	    if (Input.GetButtonDown("Fire1") && canShoot == true)
 	    {
-	    	Shoot();
+	    	StartCoroutine(Shoot());
+	    }
+	    
+	    if (Input.GetKeyDown(KeyCode.R) && canShoot == true)
+	    {
+	    	StartCoroutine(ReloadWeapon());
 	    }
     }
-    
-	void Shoot()
+	
+	IEnumerator ReloadWeapon()
 	{
-		weaponCurrentAmmo = ammoSystem.ReturnCurrentAmmo();
-		if (weaponCurrentAmmo > 0)
+		weapCurrentAmmo = ammo.ReturnCurrentAmmo();
+		weapMaxAmmo = ammo.ReturnMaxAmmo();
+		canShoot = false;
+		if( weapCurrentAmmo < weapMaxAmmo)
 		{
-			MuzzleFlash.Play();
-			ammoSystem.DecreaseAmmo();
-			ProcessRaycast();
+			ammo.Reload();
+			Debug.Log("Im reloading!");
+			yield return new WaitForSeconds(reloadTime);
+			Debug.Log("I have reloaded");
+			canShoot = true;
 		}
 		else
 		{
-			ammoSystem.Reload();
+			yield return new WaitForSeconds(0);
+			canShoot = true;
 		}
+		
 	}
 	
+	IEnumerator Shoot()
+	{
+		canShoot = false;
+		if (ammo.ReturnCurrentAmmo() != 0)
+		{
+			MuzzleFlash.Play();
+			ammo.DecreaseAmmo();
+			ProcessRaycast();
+			yield return new WaitForSeconds(fireRate);
+			canShoot = true;
+		}
+		else
+		{
+			StartCoroutine(ReloadWeapon());
+			canShoot = true;
+		}
+	}
 	void ProcessRaycast()
 	{
 		RaycastHit hitInfo;
@@ -72,4 +108,6 @@ public class Weapon : MonoBehaviour
 		GameObject impact = Instantiate(hitVFX, info.point, Quaternion.LookRotation(info.normal));
 		Destroy(impact, 0.1f);
 	}
+	
+	
 }

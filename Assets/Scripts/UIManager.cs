@@ -20,18 +20,21 @@ public class UIManager : MonoBehaviour
 	
 	void ManageScenes()
 	{
+		//Death Handler for player
 		int currentPlayerHealth = playerHealth.ReturnCurrentHealth();
 		if (currentPlayerHealth < 1)
 		{
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;
 			Time.timeScale = 0;
+			FindObjectOfType<WeaponManager>().enabled = false;
 			PlayerHUD.gameObject.SetActive(false);
 			GameOverScreen.gameObject.SetActive(true);
 		}
 		else
 		{
 			Time.timeScale = 1;
+			FindObjectOfType<WeaponManager>().enabled = true;
 			PlayerHUD.gameObject.SetActive(true);
 			GameOverScreen.gameObject.SetActive(false);
 		}

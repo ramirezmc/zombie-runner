@@ -376,9 +376,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5806584379236356656}
-  - component: {fileID: 618234189524169886}
   - component: {fileID: 8554890993363597371}
   - component: {fileID: -6929189198272680731}
+  - component: {fileID: 618234189524169886}
   m_Layer: 0
   m_Name: M1911
   m_TagString: Untagged
@@ -404,23 +404,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 177.987, z: 0}
---- !u!114 &618234189524169886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5801406901931438628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c96e5ac59441ed4eb195875e3c1458b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FPCamera: {fileID: 0}
-  MuzzleFlash: {fileID: 1714598685399838768}
-  hitVFX: {fileID: 6092268393039910438, guid: cbe9d2896a2707e4394e604f7e28f12c, type: 3}
-  gunRange: 100
-  weaponDamage: 10
 --- !u!114 &8554890993363597371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
+  canZoom: 0
   zoomedInFOV: 30
   zoomedInMouseSense: 0.5
   zoomedOutFOV: 60
@@ -452,6 +436,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxAmmo: 8
   reloadTime: 1
+--- !u!114 &618234189524169886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5801406901931438628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c96e5ac59441ed4eb195875e3c1458b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FPCamera: {fileID: 0}
+  MuzzleFlash: {fileID: 1714598685399838768}
+  hitVFX: {fileID: 6092268393039910438, guid: cbe9d2896a2707e4394e604f7e28f12c, type: 3}
+  gunRange: 15
+  weaponDamage: 10
+  fireRate: 0.2
+  isFullAuto: 0
+  canShoot: 1
 --- !u!1 &5801477001250044346
 GameObject:
   m_ObjectHideFlags: 0

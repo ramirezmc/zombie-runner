@@ -2934,6 +2934,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 67742459063312637, guid: 94bc101307c7b0c47b3547489e2bceeb, type: 3}
+      propertyPath: fireRate
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 67742459063312637, guid: 94bc101307c7b0c47b3547489e2bceeb, type: 3}
+      propertyPath: gunRange
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 67742459063312637, guid: 94bc101307c7b0c47b3547489e2bceeb, type: 3}
+      propertyPath: reloadTime
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152524417698156576, guid: 94bc101307c7b0c47b3547489e2bceeb, type: 3}
+      propertyPath: fireRate
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152524417698156576, guid: 94bc101307c7b0c47b3547489e2bceeb, type: 3}
+      propertyPath: gunRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152524417698156576, guid: 94bc101307c7b0c47b3547489e2bceeb, type: 3}
+      propertyPath: reloadTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2152524417698156576, guid: 94bc101307c7b0c47b3547489e2bceeb, type: 3}
+      propertyPath: weaponDamage
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3182142619867746993, guid: 94bc101307c7b0c47b3547489e2bceeb, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2980,6 +3008,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3182142619868106389, guid: 94bc101307c7b0c47b3547489e2bceeb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6772746104460124920, guid: 94bc101307c7b0c47b3547489e2bceeb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590786948358986199, guid: 94bc101307c7b0c47b3547489e2bceeb, type: 3}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590786948358986199, guid: 94bc101307c7b0c47b3547489e2bceeb, type: 3}
+      propertyPath: gunRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8590786948358986199, guid: 94bc101307c7b0c47b3547489e2bceeb, type: 3}
+      propertyPath: reloadTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8675438775890589225, guid: 94bc101307c7b0c47b3547489e2bceeb, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

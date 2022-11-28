@@ -5,7 +5,6 @@ using UnityEngine;
 public class Ammo : MonoBehaviour
 {
 	[SerializeField]int maxAmmo = 8;
-	[SerializeField]float reloadTime = 1f;
 	int currentAmmo;
 	
 	protected void Start()
@@ -13,17 +12,14 @@ public class Ammo : MonoBehaviour
 		currentAmmo = maxAmmo;
 	}
 	
-	protected void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.R))
-		{
-			Reload();
-		}
-	}
-	
 	public int ReturnCurrentAmmo()
 	{
 		return currentAmmo;
+	}
+	
+	public int ReturnMaxAmmo()
+	{
+		return maxAmmo;
 	}
 	
 	public void DecreaseAmmo()
@@ -37,14 +33,6 @@ public class Ammo : MonoBehaviour
 	
 	public void Reload()
 	{
-		StartCoroutine ("ReloadAmmo");
-	}
-	
-	IEnumerator ReloadAmmo()
-	{
-		Debug.Log("I am reloading!");
-		yield return new WaitForSeconds(reloadTime);
-		Debug.Log("I have reloaded");
 		currentAmmo = maxAmmo;
 	}
 }
