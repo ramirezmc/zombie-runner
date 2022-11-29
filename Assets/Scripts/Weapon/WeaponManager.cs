@@ -6,6 +6,12 @@ public class WeaponManager : MonoBehaviour
 {
 	[SerializeField] int currentWeapon = 0;
 	
+	WeaponZoom weaponZoom;
+	
+	protected void Awake()
+	{
+		weaponZoom = GetComponentInChildren<WeaponZoom>();
+	}
     void Update()
 	{
 		int previousWeapon = currentWeapon;
@@ -54,7 +60,7 @@ public class WeaponManager : MonoBehaviour
 	
 	void ProcessScrollWheel()
 	{
-		if (Input.GetAxis("Mouse ScrollWheel") > 0)
+		if (Input.GetAxis("Mouse ScrollWheel") < 0)
 		{
 			if (currentWeapon >= transform.childCount - 1)
 			{
@@ -65,7 +71,7 @@ public class WeaponManager : MonoBehaviour
 				currentWeapon++;
 			}
 		}
-		else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+		else if (Input.GetAxis("Mouse ScrollWheel") > 0)
 		{
 			if (currentWeapon <= 0)
 			{

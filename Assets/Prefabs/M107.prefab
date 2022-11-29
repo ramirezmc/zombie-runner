@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 2793586930859294175}
   - component: {fileID: 2803106223055527211}
   - component: {fileID: 2359856583496939538}
-  - component: {fileID: 6599607255429118885}
   - component: {fileID: 8915286306646634980}
   m_Layer: 0
   m_Name: M107
@@ -103,25 +102,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 0}
-  canZoom: 0
+  canZoom: 1
   zoomedInFOV: 30
   zoomedInMouseSense: 0.5
   zoomedOutFOV: 60
   zoomedOutMouseSense: 2
---- !u!114 &6599607255429118885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2788993104663557089}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae6417a328261854387b1024076e311a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAmmo: 8
-  reloadTime: 1
 --- !u!114 &8915286306646634980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,8 +125,8 @@ MonoBehaviour:
   gunRange: 100
   weaponDamage: 50
   fireRate: 3
-  isFullAuto: 0
-  canShoot: 1
+  reloadTime: 1
+  ammoType: 2
 --- !u!1 &2789104040374167801
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,7 +429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2982143931400392125, guid: cd9bf30e726654a40930a8c12941b43d, type: 3}
       propertyPath: looping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8374196840283285068, guid: cd9bf30e726654a40930a8c12941b43d, type: 3}
       propertyPath: m_Name

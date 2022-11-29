@@ -377,7 +377,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5806584379236356656}
   - component: {fileID: 8554890993363597371}
-  - component: {fileID: -6929189198272680731}
   - component: {fileID: 618234189524169886}
   m_Layer: 0
   m_Name: M1911
@@ -422,20 +421,6 @@ MonoBehaviour:
   zoomedInMouseSense: 0.5
   zoomedOutFOV: 60
   zoomedOutMouseSense: 2
---- !u!114 &-6929189198272680731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5801406901931438628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae6417a328261854387b1024076e311a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAmmo: 8
-  reloadTime: 1
 --- !u!114 &618234189524169886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,11 +436,11 @@ MonoBehaviour:
   FPCamera: {fileID: 0}
   MuzzleFlash: {fileID: 1714598685399838768}
   hitVFX: {fileID: 6092268393039910438, guid: cbe9d2896a2707e4394e604f7e28f12c, type: 3}
-  gunRange: 15
+  gunRange: 10
   weaponDamage: 10
   fireRate: 0.2
-  isFullAuto: 0
-  canShoot: 1
+  reloadTime: 1
+  ammoType: 0
 --- !u!1 &5801477001250044346
 GameObject:
   m_ObjectHideFlags: 0

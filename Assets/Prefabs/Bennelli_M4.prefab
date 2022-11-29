@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4863889773084484289}
   - component: {fileID: 4876416724607822749}
   - component: {fileID: 1742237056282341874}
-  - component: {fileID: 4737797849174243926}
   - component: {fileID: 5521916093020161449}
   m_Layer: 0
   m_Name: Bennelli_M4
@@ -28,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4898803425302456919}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -107,20 +106,6 @@ MonoBehaviour:
   zoomedInMouseSense: 0.5
   zoomedOutFOV: 60
   zoomedOutMouseSense: 2
---- !u!114 &4737797849174243926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4898803425302456919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae6417a328261854387b1024076e311a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxAmmo: 8
-  reloadTime: 1
 --- !u!114 &5521916093020161449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,13 +119,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FPCamera: {fileID: 0}
-  MuzzleFlash: {fileID: 0}
+  MuzzleFlash: {fileID: 7690260270308884354}
   hitVFX: {fileID: 6092268393039910438, guid: cbe9d2896a2707e4394e604f7e28f12c, type: 3}
-  gunRange: 10
-  weaponDamage: 50
+  gunRange: 8
+  weaponDamage: 100
   fireRate: 2
-  isFullAuto: 0
-  canShoot: 1
+  reloadTime: 1
+  ammoType: 1
 --- !u!1 &4899029723872850355
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1878381286211730752, guid: cd9bf30e726654a40930a8c12941b43d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.001
       objectReference: {fileID: 0}
     - target: {fileID: 1878381286211730752, guid: cd9bf30e726654a40930a8c12941b43d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -328,7 +313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1878381286211730752, guid: cd9bf30e726654a40930a8c12941b43d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.489
       objectReference: {fileID: 0}
     - target: {fileID: 1878381286211730752, guid: cd9bf30e726654a40930a8c12941b43d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -360,7 +345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2982143931400392125, guid: cd9bf30e726654a40930a8c12941b43d, type: 3}
       propertyPath: looping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8374196840283285068, guid: cd9bf30e726654a40930a8c12941b43d, type: 3}
       propertyPath: m_Name
@@ -371,5 +356,10 @@ PrefabInstance:
 --- !u!4 &6470167641341185919 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1878381286211730752, guid: cd9bf30e726654a40930a8c12941b43d, type: 3}
+  m_PrefabInstance: {fileID: 4889782074006467135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7690260270308884354 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2982143931400392125, guid: cd9bf30e726654a40930a8c12941b43d, type: 3}
   m_PrefabInstance: {fileID: 4889782074006467135}
   m_PrefabAsset: {fileID: 0}

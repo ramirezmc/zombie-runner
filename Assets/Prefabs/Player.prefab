@@ -327,6 +327,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3193542998849143921}
   - component: {fileID: 7042026820249687812}
+  - component: {fileID: 598870685952688892}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
@@ -365,6 +366,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon: 0
+--- !u!114 &598870685952688892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5008987552490354769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae6417a328261854387b1024076e311a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ammoSlots:
+  - ammoType: 0
+    maxAmmoAmount: 8
+  - ammoType: 2
+    maxAmmoAmount: 4
+  - ammoType: 1
+    maxAmmoAmount: 5
 --- !u!1001 &1534361011402187966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -376,18 +396,6 @@ PrefabInstance:
       propertyPath: FPCamera
       value: 
       objectReference: {fileID: 3182142619866501271}
-    - target: {fileID: 618234189524169886, guid: b5814705462acf742b902deae8c3191f, type: 3}
-      propertyPath: fireRate
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 618234189524169886, guid: b5814705462acf742b902deae8c3191f, type: 3}
-      propertyPath: gunRange
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 618234189524169886, guid: b5814705462acf742b902deae8c3191f, type: 3}
-      propertyPath: weaponDamage
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5801406901931438628, guid: b5814705462acf742b902deae8c3191f, type: 3}
       propertyPath: m_Name
       value: M1911
@@ -458,18 +466,6 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 3182142619866501271}
-    - target: {fileID: 4737797849174243926, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
-      propertyPath: maxAmmo
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4737797849174243926, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
-      propertyPath: reloadTime
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4876416724607822749, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4897520347243893745, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -522,41 +518,8 @@ PrefabInstance:
       propertyPath: FPCamera
       value: 
       objectReference: {fileID: 3182142619866501271}
-    - target: {fileID: 5521916093020161449, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
-      propertyPath: fireRate
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5521916093020161449, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
-      propertyPath: gunRange
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5521916093020161449, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
-      propertyPath: MuzzleFlash
-      value: 
-      objectReference: {fileID: 5845699392136963068}
-    - target: {fileID: 5521916093020161449, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
-      propertyPath: weaponDamage
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6470167641341185919, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.001
-      objectReference: {fileID: 0}
-    - target: {fileID: 6470167641341185919, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.489
-      objectReference: {fileID: 0}
-    - target: {fileID: 7690260270308884354, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
---- !u!198 &5845699392136963068 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 7690260270308884354, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
-  m_PrefabInstance: {fileID: 4294554259967777918}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8677924755107303311 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4897520347243893745, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
@@ -569,14 +532,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3193542998849143921}
     m_Modifications:
-    - target: {fileID: 511214189288430824, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2359856583496939538, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
-      propertyPath: canZoom
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2359856583496939538, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
       propertyPath: playerCamera
       value: 
@@ -629,30 +584,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3777358248747478037, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
-      propertyPath: looping
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6599607255429118885, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
-      propertyPath: maxAmmo
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6599607255429118885, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
-      propertyPath: reloadTime
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8915286306646634980, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
       propertyPath: FPCamera
       value: 
       objectReference: {fileID: 3182142619866501271}
-    - target: {fileID: 8915286306646634980, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
-      propertyPath: fireRate
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8915286306646634980, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
-      propertyPath: weaponDamage
-      value: 50
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
 --- !u!4 &6770396400211126088 stripped

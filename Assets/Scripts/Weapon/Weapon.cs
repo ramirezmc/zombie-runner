@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(WeaponZoom), typeof(Ammo))]
+[RequireComponent(typeof(WeaponZoom))]
 public class Weapon : MonoBehaviour
 {
 	[SerializeField]Camera FPCamera;
@@ -15,31 +15,42 @@ public class Weapon : MonoBehaviour
 	[SerializeField]float fireRate = 1;
 	[SerializeField]float reloadTime = 1f;
 	
-	[SerializeField]bool isFullAuto = false;
+	public AmmoType ammoType;
 	
 	
 	EnemyHealth enemyHealth;
 	Ammo ammo;
 	
+	
 	bool canShoot = true;
-	int weapCurrentAmmo ;
+	float switchDelay = 1.5f;
+	int weapCurrentAmmo;
 	int weapMaxAmmo;
 	
 	protected void Awake()
 	{
 		enemyHealth = FindObjectOfType<EnemyHealth>();
-		ammo = GetComponent<Ammo>();
-		
+		ammo = FindObjectOfType<Ammo>();
+	}
+	
+	protected void OnEnable()
+	{
+		StartCoroutine(SwitchedWeapon());
+	}
+	
+	protected void Start()
+	{
+		ammo.MaxWeapAmmo(ammoType);
 	}
 	
     void Update()
     {
-	    if (Input.GetButtonDown("Fire1") && canShoot == true)
+	    if (Input.GetMouseButton(0) && canShoot == true)
 	    {
 	    	StartCoroutine(Shoot());
 	    }
 	    
-	    if (Input.GetKeyDown(KeyCode.R) && canShoot == true)
+	    else if (Input.GetKeyDown(KeyCode.R) && canShoot == true)
 	    {
 	    	StartCoroutine(ReloadWeapon());
 	    }
@@ -48,11 +59,11 @@ public class Weapon : MonoBehaviour
 	IEnumerator ReloadWeapon()
 	{
 		weapCurrentAmmo = ammo.ReturnCurrentAmmo();
-		weapMaxAmmo = ammo.ReturnMaxAmmo();
+		weapMaxAmmo = ammo.ReturnMaxAmmo(ammoType);
 		canShoot = false;
 		if( weapCurrentAmmo < weapMaxAmmo)
 		{
-			ammo.Reload();
+			ammo.Reload(ammoType);
 			Debug.Log("Im reloading!");
 			yield return new WaitForSeconds(reloadTime);
 			Debug.Log("I have reloaded");
@@ -60,6 +71,7 @@ public class Weapon : MonoBehaviour
 		}
 		else
 		{
+			Debug.Log("My ammo is full!");
 			yield return new WaitForSeconds(0);
 			canShoot = true;
 		}
@@ -79,7 +91,8 @@ public class Weapon : MonoBehaviour
 		}
 		else
 		{
-			StartCoroutine(ReloadWeapon());
+			StartCoroutine("ReloadWeapon",ammoType);
+			yield return new WaitForSeconds(reloadTime);
 			canShoot = true;
 		}
 	}
@@ -108,6 +121,11 @@ public class Weapon : MonoBehaviour
 		GameObject impact = Instantiate(hitVFX, info.point, Quaternion.LookRotation(info.normal));
 		Destroy(impact, 0.1f);
 	}
-	
+	IEnumerator SwitchedWeapon()
+	{
+		canShoot = false;
+		yield return new WaitForSeconds(switchDelay);
+		canShoot = true;
+	}
 	
 }
