@@ -380,11 +380,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoSlots:
   - ammoType: 0
-    maxAmmoAmount: 8
+    magazineSize: 8
   - ammoType: 2
-    maxAmmoAmount: 4
+    magazineSize: 5
   - ammoType: 1
-    maxAmmoAmount: 5
+    magazineSize: 8
 --- !u!1001 &1534361011402187966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -396,6 +396,18 @@ PrefabInstance:
       propertyPath: FPCamera
       value: 
       objectReference: {fileID: 3182142619866501271}
+    - target: {fileID: 618234189524169886, guid: b5814705462acf742b902deae8c3191f, type: 3}
+      propertyPath: gunRange
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 618234189524169886, guid: b5814705462acf742b902deae8c3191f, type: 3}
+      propertyPath: reloadTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 618234189524169886, guid: b5814705462acf742b902deae8c3191f, type: 3}
+      propertyPath: weaponDamage
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5801406901931438628, guid: b5814705462acf742b902deae8c3191f, type: 3}
       propertyPath: m_Name
       value: M1911
@@ -514,10 +526,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bennelli_M4
       objectReference: {fileID: 0}
+    - target: {fileID: 4898803425302456919, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5521916093020161449, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
       propertyPath: FPCamera
       value: 
       objectReference: {fileID: 3182142619866501271}
+    - target: {fileID: 5521916093020161449, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
+      propertyPath: fireRate
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521916093020161449, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
+      propertyPath: gunRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5521916093020161449, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
+      propertyPath: reloadTime
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 389ae13ee93cbb34195fd4b37c14d696, type: 3}
 --- !u!4 &8677924755107303311 stripped
@@ -539,6 +567,10 @@ PrefabInstance:
     - target: {fileID: 2788993104663557089, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
       propertyPath: m_Name
       value: M107
+      objectReference: {fileID: 0}
+    - target: {fileID: 2788993104663557089, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2791274536137881169, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
       propertyPath: m_RootOrder
@@ -588,6 +620,18 @@ PrefabInstance:
       propertyPath: FPCamera
       value: 
       objectReference: {fileID: 3182142619866501271}
+    - target: {fileID: 8915286306646634980, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
+      propertyPath: fireRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915286306646634980, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
+      propertyPath: gunRange
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8915286306646634980, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
+      propertyPath: reloadTime
+      value: 2.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1126fd9716dd29d43ade027f988f2e4b, type: 3}
 --- !u!4 &6770396400211126088 stripped

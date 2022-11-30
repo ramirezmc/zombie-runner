@@ -25,7 +25,8 @@ public class Weapon : MonoBehaviour
 	bool canShoot = true;
 	float switchDelay = 1.5f;
 	int weapCurrentAmmo;
-	int weapMaxAmmo;
+	int weapMagazineSize;
+	int weapReserveAmmo;
 	
 	protected void Awake()
 	{
@@ -40,7 +41,7 @@ public class Weapon : MonoBehaviour
 	
 	protected void Start()
 	{
-		ammo.MaxWeapAmmo(ammoType);
+		ammo.MagazineSize(ammoType);
 	}
 	
     void Update()
@@ -59,15 +60,25 @@ public class Weapon : MonoBehaviour
 	IEnumerator ReloadWeapon()
 	{
 		weapCurrentAmmo = ammo.ReturnCurrentAmmo();
-		weapMaxAmmo = ammo.ReturnMaxAmmo(ammoType);
+		weapMagazineSize = ammo.ReturnMagazineSize(ammoType);
+		weapReserveAmmo = ammo.ReturnAmmoReserve(ammoType);
 		canShoot = false;
-		if( weapCurrentAmmo < weapMaxAmmo)
+		if(weapCurrentAmmo < weapMagazineSize)
 		{
-			ammo.Reload(ammoType);
-			Debug.Log("Im reloading!");
-			yield return new WaitForSeconds(reloadTime);
-			Debug.Log("I have reloaded");
-			canShoot = true;
+			if(weapReserveAmmo == 0)
+			{
+				Debug.Log("I am out of ammo!");
+				yield return new WaitForSeconds(0.5f);
+				canShoot = true;
+			}
+			else
+			{
+				ammo.Reload(ammoType);
+				Debug.Log("Im reloading!");
+				yield return new WaitForSeconds(reloadTime);
+				Debug.Log("I have reloaded");
+				canShoot = true;
+			}
 		}
 		else
 		{

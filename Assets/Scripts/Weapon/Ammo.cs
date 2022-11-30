@@ -7,13 +7,13 @@ public class Ammo : MonoBehaviour
 	[SerializeField]AmmoSlot[] ammoSlots;
 	
 	int currentAmmo;
-	int maxAmmo;
 	
 	[System.Serializable]
 	private class AmmoSlot
 	{
 		public AmmoType ammoType;
-		public int maxAmmoAmount;
+		public int magazineSize;
+		public int ammoReserve;
 	}
 	
 	private AmmoSlot GetAmmoSlot(AmmoType ammoType)
@@ -28,9 +28,9 @@ public class Ammo : MonoBehaviour
 		return null;
 	}
 	
-	public void MaxWeapAmmo(AmmoType ammoType)
+	public void MagazineSize(AmmoType ammoType)
 	{
-		currentAmmo = GetAmmoSlot(ammoType).maxAmmoAmount;
+		currentAmmo = GetAmmoSlot(ammoType).magazineSize;
 	}
 	
 	public int ReturnCurrentAmmo()
@@ -38,11 +38,20 @@ public class Ammo : MonoBehaviour
 		return currentAmmo;
 	}
 	
-	public int ReturnMaxAmmo(AmmoType ammoType)
+	public int ReturnMagazineSize(AmmoType ammoType)
 	{
-		return GetAmmoSlot(ammoType).maxAmmoAmount;
+		return GetAmmoSlot(ammoType).magazineSize;
 	}
 	
+	public int ReturnAmmoReserve(AmmoType ammoType)
+	{
+		return GetAmmoSlot(ammoType).ammoReserve;
+	}
+	
+	public void AddReserveAmmo(AmmoType ammoType, int ammoAmmount)
+	{
+		GetAmmoSlot(ammoType).ammoReserve += ammoAmmount;
+	}
 	public void DecreaseAmmo()
 	{
 		if (currentAmmo > 0)
@@ -54,6 +63,17 @@ public class Ammo : MonoBehaviour
 	
 	public void Reload(AmmoType ammoType)
 	{
-		currentAmmo = GetAmmoSlot(ammoType).maxAmmoAmount;
+		if(GetAmmoSlot(ammoType).magazineSize < GetAmmoSlot(ammoType).ammoReserve)
+		{
+			currentAmmo = GetAmmoSlot(ammoType).magazineSize;
+			GetAmmoSlot(ammoType).ammoReserve -= GetAmmoSlot(ammoType).magazineSize;
+			return;
+		}
+		else if (GetAmmoSlot(ammoType).magazineSize > GetAmmoSlot(ammoType).ammoReserve)
+		{
+			currentAmmo = GetAmmoSlot(ammoType).ammoReserve;
+			GetAmmoSlot(ammoType).ammoReserve -= GetAmmoSlot(ammoType).ammoReserve;
+			return;
+		}
 	}
 }
