@@ -7,8 +7,7 @@ public class WeaponManager : MonoBehaviour
 	[SerializeField] int currentWeapon = 0;
 	
 	WeaponZoom weaponZoom;
-	
-	protected void Awake()
+	void Awake()
 	{
 		weaponZoom = GetComponentInChildren<WeaponZoom>();
 	}

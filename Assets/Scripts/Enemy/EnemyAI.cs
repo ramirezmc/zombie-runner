@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
 	[SerializeField]float chaseRange = 5f;
 	[SerializeField]float turnSpeed = 10f;
 	Transform target;
+	EnemyHealth enemyHealth;
 	bool isProvoked = false;
 	
 	NavMeshAgent navMeshAgent;
@@ -16,6 +17,7 @@ public class EnemyAI : MonoBehaviour
 	
 	protected void Awake()
 	{
+		enemyHealth = GetComponent<EnemyHealth>();
 		target = FindObjectOfType<PlayerHealth>().transform;
 	}
 	
@@ -25,7 +27,7 @@ public class EnemyAI : MonoBehaviour
     }
 
 
-    void Update()
+	void Update()
 	{
 		EnemyChaseRange();
     }
@@ -65,9 +67,14 @@ public class EnemyAI : MonoBehaviour
 	
 	void ChaseTarget()
 	{
-		GetComponent<Animator>().SetBool("isAttacking", false);
-		GetComponent<Animator>().SetTrigger("Move");
-		navMeshAgent.SetDestination(target.position);
+		if (enemyHealth.isAlive)
+		{
+			GetComponent<Animator>().SetBool("isAttacking", false);
+			GetComponent<Animator>().SetTrigger("Move");
+			navMeshAgent.SetDestination(target.position);
+			return;
+		}
+		navMeshAgent.enabled = false;
 	}
 	
 	void AttackTarget()
@@ -78,9 +85,12 @@ public class EnemyAI : MonoBehaviour
 	
 	void FaceToTarget()
 	{
-		Vector3 direction = (target.position - transform.position).normalized;
-		Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
-		transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
+		if (enemyHealth.isAlive)
+		{
+			Vector3 direction = (target.position - transform.position).normalized;
+			Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+			transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
+		}
 	}
 	void OnDrawGizmosSelected()
 	{

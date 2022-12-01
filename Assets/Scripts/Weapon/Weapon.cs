@@ -21,7 +21,6 @@ public class Weapon : MonoBehaviour
 	EnemyHealth enemyHealth;
 	Ammo ammo;
 	
-	
 	bool canShoot = true;
 	float switchDelay = 1.5f;
 	int weapCurrentAmmo;

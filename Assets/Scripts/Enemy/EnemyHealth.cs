@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+	public bool isAlive = true;
 	[SerializeField]int maxHitPoints = 100;
+	Animator animator;
 	int currentHitPoints;
+	
+	protected void Awake()
+	{
+		animator = GetComponent<Animator>();
+	}
 	
 	protected void Start()
 	{
@@ -19,9 +26,10 @@ public class EnemyHealth : MonoBehaviour
 			BroadcastMessage("OnDamageTaken");
 			currentHitPoints -= damage;
 		}
-		else
+		else //if(currentHitPoints < 1 && isAlive)
 		{
-			//Destroy(gameObject);
+			isAlive = false;
+			animator.SetTrigger("death");
 		}
 	}
 }
