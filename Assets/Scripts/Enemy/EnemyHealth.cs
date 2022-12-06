@@ -26,7 +26,7 @@ public class EnemyHealth : MonoBehaviour
 			BroadcastMessage("OnDamageTaken");
 			currentHitPoints -= damage;
 		}
-		else //if(currentHitPoints < 1 && isAlive)
+		else if(currentHitPoints < 1 && isAlive)
 		{
 			isAlive = false;
 			animator.SetTrigger("death");
